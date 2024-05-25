@@ -1,0 +1,38 @@
+<% layout("/layouts/bolierplate")%> 
+
+<body>
+  <div class="row mb-3 ">
+    <div class="col-8 offset-2">
+      <h1>Log into Wander Lust</h1>
+      <form action="/login" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="form-control"
+            placeholder="Enter username"
+            required
+          />
+          <div class="invalid-feedback">Enter a Valid username</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input
+            type="text"
+            name="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter Password"
+            required
+          />
+          <div class="invalid-feedback">Enter a Valid Password</div>
+        </div>
+
+        <button class="btn btn-sucess add-button">Login</button>
+      </form>
+    </div>
+  </div>
+</body>
