@@ -9,15 +9,8 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    type: String,
-    filename: String,
     url: String,
-    default:
-      "https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2096.jpg?w=900&t=st=1711735394~exp=1711735994~hmac=006a8b9f16a0b93efc564d8bca6f51fc74e56ec5f4829e396c6d1bf9954de272",
-    set: (v) =>
-      v === ""
-        ? "https://img.freepik.com/free-psd/modern-farmhouse-meadow-hill-generative-ai_587448-2096.jpg?w=900&t=st=1711735394~exp=1711735994~hmac=006a8b9f16a0b93efc564d8bca6f51fc74e56ec5f4829e396c6d1bf9954de272"
-        : v,
+    filename: String,
   },
   price: Number,
   location: String,
