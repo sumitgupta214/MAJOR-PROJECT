@@ -1,3 +1,4 @@
+const User = require("../Models/user.js");
 module.exports.renderLoginForm = (req, res) => {
   res.render("users/login.ejs");
 };
