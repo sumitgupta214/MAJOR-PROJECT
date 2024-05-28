@@ -37,21 +37,29 @@ module.exports.showListings = async (req, res) => {
 };
 
 module.exports.createListings = async (req, res, next) => {
-  let response = await geocodingClient
-    .forwardGeocode({
-      query: req.body.listing.location,
-      limit: 1,
-    })
-    .send();
-  let url = req.file.path;
-  let filename = req.file.filename;
-  const newListing = new Listing(req.body.listing);
-  newListing.owner = req.user._id;
-  newListing.image = { url, filename };
-  newListing.geometry = response.body.features[0].geometry;
-  await newListing.save();
-  req.flash("success", "New Listing Created!");
-  res.redirect("/listings");
+  if (req.user.isAdmin == "true") {
+    let response = await geocodingClient
+      .forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1,
+      })
+      .send();
+    let url = req.file.path;
+    let filename = req.file.filename;
+    const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id;
+    newListing.image = { url, filename };
+    newListing.geometry = response.body.features[0].geometry;
+    await newListing.save();
+    req.flash("success", "New Listing Created!");
+    res.redirect("/listings");
+  } else {
+    req.flash(
+      "error",
+      "You are not a verified user to create Listing, To create One please Verify!"
+    );
+    res.redirect("/listings");
+  }
 };
 
 module.exports.editListingPage = async (req, res, next) => {
