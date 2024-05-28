@@ -141,7 +141,7 @@ body {
 
 #filters {
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: scroll;
   margin: 1rem 0;
 }
 .filter {
@@ -178,4 +178,7 @@ body {
 }
 .card{
   min-width: 190px !important;
+}
+.container-fluid{
+  background: #fff;
 }
