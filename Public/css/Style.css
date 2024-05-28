@@ -141,9 +141,12 @@ body {
 
 #filters {
   display: flex;
-  overflow-x: scroll;
+  flex-wrap: wrap;
   margin: 1rem 0;
 }
+
+
+
 .filter {
   text-align: center;
   margin-right: 2rem;
@@ -181,4 +184,11 @@ body {
 }
 .container-fluid{
   background: #fff;
+}
+
+@media screen and (max-width:800px) {
+  #filters{
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+  }
 }
