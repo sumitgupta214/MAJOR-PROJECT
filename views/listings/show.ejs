@@ -17,8 +17,9 @@
     <div class="card-body">
       <p class="card-text mt-2">
         <i>Listed By : <%= listing.owner.username %></i> <br />
-        <%= listing.description %> <br />
-        <%= listing.price %> <br />
+
+        <b><%= listing.description %> </b><br />
+        <b>&#8377;<%= listing.price %> </b><br />
         <%= listing.location %> <br />
         <%= listing.country %>
       </p>
@@ -47,20 +48,11 @@
       novalidate
       class="needs-validation"
     >
-      <!-- <input
-          type="range"
-          name="review[rating]"
-          min="1"
-          max="5"
-          id="rating"
-          class="form-range"
-        />
-      </div> -->
+
 
       <div class="mb-3 mt-3">
         <label for="rating" class="form-label">Rating</label>
         <fieldset class="starability-slot">
-          <!-- <legend>First rating:</legend> -->
           <input
             type="radio"
             id="no-rate"
@@ -136,13 +128,13 @@
 
       <div class="card col-5 ms-3 mb-3">
         <div class="card-body">
-          <div class="card-title mt-2">
-            Posted By : <%= review.author.username %>
+          <div class="card-title">
+            <i class="user-review-username">Posted By : <%= review.author.username %></i>
           </div>
           <p class="starability-result" data-rating="<%=review.rating %>">
             Rated: <%= review.rating %> stars
           </p>
-          <div class="card-text"><%= review.comment %></div>
+          <div class="card-text review-text"><b><%= review.comment %></b></div>
 
           <% if (currUser && currUser._id.equals(review.author._id)) { %>
           <div>
@@ -150,7 +142,7 @@
               action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
               method="post"
             >
-              <button class="btn btn-dark mb-3">Delete</button>
+              <button class="btn btn-dark btn-small"><i class="fa-solid fa-trash"></i></button>
             </form>
           </div>
           <% } %>

@@ -166,3 +166,16 @@ body {
   padding: 0.7rem;
   opacity: 0.8;
 }
+.btn-small{
+  background-color: #fe424d !important;
+  border-radius: 20% !important;
+}
+.user-review-username{
+  font-size: 12px;
+}
+.card-body{
+  padding: 10px !important;
+}
+.card{
+  min-width: 190px !important;
+}
