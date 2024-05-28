@@ -8,7 +8,15 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.renderNewForm = (req, res) => {
-  res.render("listings/new.ejs");
+  if (req.user.isAdmin == "true") {
+    res.render("listings/new.ejs");
+  } else {
+    req.flash(
+      "error",
+      "You are not a verified user to create Listing, To create One please Verify!"
+    );
+    res.redirect("/listings");
+  }
 };
 
 module.exports.showListings = async (req, res) => {
@@ -35,7 +43,6 @@ module.exports.createListings = async (req, res, next) => {
       limit: 1,
     })
     .send();
-  console.log(response.body.features[0].geometry);
   let url = req.file.path;
   let filename = req.file.filename;
   const newListing = new Listing(req.body.listing);
